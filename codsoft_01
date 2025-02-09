@@ -1,0 +1,43 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+void numberGuessingGame() {
+    int seed;
+    cout << "Enter a seed value to initialize the random number generator: ";
+    cin >> seed;
+    srand(seed); 
+
+    int randomNumber = rand() % 20 + 1; 
+    int userGuess = 0;
+    int attempts = 0;
+
+    cout << "Welcome to the Number Guessing Game!" << endl;
+    cout << "I have selected a random number between 1 and 20." << endl;
+    cout << "Try to guess it!" << endl;
+
+    while (userGuess != randomNumber) {
+        cout << "Enter your guess (1 to 20): ";
+        cin >> userGuess;
+
+        if (userGuess < 1 || userGuess > 20) {
+            cout << "Invalid input! Please enter a number between 1 and 20." << endl;
+            continue;
+        }
+
+        attempts++;
+
+        if (userGuess > randomNumber) {
+            cout << "Too high! Try again." << endl;
+        } else if (userGuess < randomNumber) {
+            cout << "Too low! Try again." << endl;
+        } else {
+            cout << "Congratulations! You guessed the correct number in " << attempts << " attempts." << endl;
+        }
+    }
+}
+
+int main() {
+    numberGuessingGame();
+    return 0;
+}
